@@ -1,19 +1,18 @@
 import dotenv from 'dotenv'
 dotenv.config()
 import express from "express"
+import http from 'http'
+import socketio from 'socket.io'
 import initMiddlewares from './api/middleware/Middlewares.js'
 import {initRoutes} from './api/routes/index.js'
 const PORT = process.env.PORT || 3000
 
 
-// app.get('/',(req,res)=>{
-//     res.send('hello world')
-// })
-
-
-
 const createServer=()=>{
     const app = express()
+    const server= http.createServer(app)
+    const io = socketio(server)
+
     
     // set middleware
     initMiddlewares(app)
@@ -23,8 +22,11 @@ const createServer=()=>{
    
     // set config
 
+    io.on('connection',socket=>{
+        console.log('user connected')
+    })
 
-    app.listen(PORT,()=>{console.log(`server is listenning on port ${PORT}`)})
+    server.listen(PORT,()=>{console.log(`server is listenning on port ${PORT}`)})
 
 }
 
