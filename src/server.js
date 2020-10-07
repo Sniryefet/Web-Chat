@@ -13,12 +13,14 @@ const createServer=()=>{
     const server= http.createServer(app)
     const io = socketio(server)
 
-    
-    // set middleware
-    initMiddlewares(app)
-    
+     // set middleware
+     initMiddlewares(app) 
     // init routes
-    initRoutes(app)
+     initRoutes(app)
+    
+    
+    
+   
    
     // set config
 

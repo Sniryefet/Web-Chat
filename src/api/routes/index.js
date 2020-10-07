@@ -1,7 +1,8 @@
 import express from "express";
-import { homeRoute} from './home.js'
+import router from './routes.js'
 
 export const initRoutes=app=>{
-    const router=express.Router()
-    app.use('/',homeRoute(router))
+
+    app.use('/',router)
+    
 }
