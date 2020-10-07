@@ -1,0 +1,4 @@
+
+1. add io connection
+2. enable user to create\join room 
+3. add user authentication

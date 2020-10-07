@@ -8,6 +8,6 @@ let router = express.Router();
 
 router.get("/", homeController);
 // define the about route
-router.get("/chatLobby",chatLobbyController);
+router.get("/chatRoom",chatLobbyController);
 
 export default router;

@@ -5,5 +5,5 @@ export const homeController = async(req,res)=>{
 }
 
 export const chatLobbyController = async(req,res)=>{
-    res.render('chatLobby')
+    res.render('chatRoom')
 }
