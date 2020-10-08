@@ -1,5 +1,6 @@
 const initSocketIo = (io) => {
-  io.on("connection", (socket) => {
+  
+    io.on("connection", (socket) => {
     
     
     
@@ -11,7 +12,7 @@ const initSocketIo = (io) => {
     socket.on("disconnect", () => {
       io.emit("serverMessage", "A user has left the chat");
     });
-    
+
   });
 
 };
