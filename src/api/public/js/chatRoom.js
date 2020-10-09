@@ -3,9 +3,11 @@ const socket = io();
 const userMessageForm = document.getElementById('chat-form');
 
 
-console.log(userMessageForm)
+
 socket.on('serverMessage',message=>{
   console.log(message)
+  outputMessage(message)
+
 })
 
 
@@ -13,17 +15,34 @@ socket.on('serverMessage',message=>{
 
 userMessageForm.addEventListener('submit',event=>{
   event.preventDefault()
+  let userMessage = event.target.elements.msg.value
   console.log(userMessage)
+
+  socket.emit('userMessage',userMessage)
+
+  
+  // clears user message box
+  event.target.elements.msg.value=''
+
 })
 
 
 
+function outputMessage(message){
+  const div = document.createElement('div');
+  div.classList.add('message');
+  const userDetailsParagraph = document.createElement('p');
+  userDetailsParagraph.classList.add('meta');
+  userDetailsParagraph.innerText = 'snir';
+  userDetailsParagraph.innerHTML += `<span>12:00</span>`;
+  div.appendChild(userDetailsParagraph);
+  const userMessageParagraph = document.createElement('p');
+  userMessageParagraph.classList.add('text');
+  userMessageParagraph.innerText = message;
+  div.appendChild(userMessageParagraph);
+  document.querySelector('.chat-messages').appendChild(div);
 
-
-
-
-
-
+}
 
 
 
