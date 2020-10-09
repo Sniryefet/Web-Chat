@@ -1,13 +1,14 @@
 import express from "express";
 import {
   homeController,
-  chatLobbyController,
+  chatRoomController,
 } from "../controllers/chatController.js";
 
 let router = express.Router();
 
 router.get("/", homeController);
 // define the about route
-router.get("/chatRoom",chatLobbyController);
+router.get("/chatRoom",chatRoomController);
+
 
 export default router;

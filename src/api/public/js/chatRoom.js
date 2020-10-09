@@ -1,23 +1,36 @@
 const socket = io();
 
 const userMessageForm = document.getElementById('chat-form');
+const chatMessages = document.querySelector('.chat-messages');
+
+// Get username and room from URL
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true
+});
+
+console.log(username,room)
 
 
+
+// -------------------------------------------------------------------------------------------------------------
 
 socket.on('serverMessage',message=>{
   console.log(message)
   outputMessage(message)
 
+  // Scroll down effect 
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
+socket.emit('userJoinedRoom',{username,room})
 
 // -------------------------------------------------------- FORM Listener --------------------------------------------------------
 
 userMessageForm.addEventListener('submit',event=>{
   event.preventDefault()
   let userMessage = event.target.elements.msg.value
-  console.log(userMessage)
 
+  // send the message to the server
   socket.emit('userMessage',userMessage)
 
   
@@ -33,12 +46,12 @@ function outputMessage(message){
   div.classList.add('message');
   const userDetailsParagraph = document.createElement('p');
   userDetailsParagraph.classList.add('meta');
-  userDetailsParagraph.innerText = 'snir';
-  userDetailsParagraph.innerHTML += `<span>12:00</span>`;
+  userDetailsParagraph.innerText = `${message.username}` ;
+  userDetailsParagraph.innerHTML += ` <span>${message.time}</span>`;
   div.appendChild(userDetailsParagraph);
   const userMessageParagraph = document.createElement('p');
   userMessageParagraph.classList.add('text');
-  userMessageParagraph.innerText = message;
+  userMessageParagraph.innerText = message.text;
   div.appendChild(userMessageParagraph);
   document.querySelector('.chat-messages').appendChild(div);
 
