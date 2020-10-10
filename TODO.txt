@@ -1,6 +1,5 @@
 
-1. use database
-2. add user authentication and oAuth
-3. enable user to create\join room 
-4. change style
-
+1. use database                                          | ✔
+2. add user authentication and oAuth                     | ⨉
+3. enable user to create\join room                       | ⨉
+4. change style                                          | ⨉  

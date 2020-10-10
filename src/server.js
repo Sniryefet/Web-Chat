@@ -1,11 +1,11 @@
-import dotenv from 'dotenv'
-dotenv.config()
 import express from "express"
-import http from 'http'
+import http from 'http' //check if needed
 import socketio from 'socket.io'
+import initMongoDB from './config/mongodb.js'
 import initMiddlewares from './api/middleware/Middlewares.js'
-import {initRoutes} from './api/routes/index.js'
 import initSocketIo from './api/controllers/ioController.js'
+import {initRoutes} from './api/routes/index.js'
+
 const PORT = process.env.PORT || 3000
 
 
@@ -22,6 +22,7 @@ const createServer=()=>{
     
    
     // set config
+    initMongoDB()
 
     // init socket.io
     initSocketIo(io)
