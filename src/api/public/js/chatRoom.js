@@ -37,12 +37,16 @@ socket.emit("userJoinedRoom", { username, room });
 userMessageForm.addEventListener("submit", (event) => {
   event.preventDefault();
   let userMessage = event.target.elements.msg.value;
+  userMessage=userMessage.trim()
 
-  // send the message to the server
-  socket.emit("userMessage", userMessage);
+  if (userMessage) {
+    // send the message to the server
+    socket.emit("userMessage", userMessage);
 
-  // clears user message box
-  event.target.elements.msg.value = "";
+    // clears user message box
+    event.target.elements.msg.value = "";
+    event.target.elements.msg.focus();
+  }
 });
 
 function outputMessage(message) {
@@ -60,41 +64,14 @@ function outputMessage(message) {
   document.querySelector(".chat-messages").appendChild(div);
 }
 
-function updateUsers(users){
-  console.log("clinet DEBUG "+users);
-  userList.innerHTML = '';
-  users.forEach(user=>{
-    const li = document.createElement('li');
+function updateUsers(users) {
+  console.log("clinet DEBUG " + users);
+  userList.innerHTML = "";
+  users.forEach((user) => {
+    const li = document.createElement("li");
     li.innerText = user.username;
     userList.appendChild(li);
   });
-
 }
 
-// // Get room and users
-// socket.on('roomUsers', ({ room, users }) => {
-//   outputRoomName(room);
-//   outputUsers(users);
-// });
-
-// // Message submit
-// chatForm.addEventListener('submit', e => {
-//   e.preventDefault();
-
-//   // Get message text
-//   let msg = e.target.elements.msg.value;
-
-//   msg = msg.trim();
-
-//   if (!msg){
-//     return false;
-//   }
-
-//   // Emit message to server
-//   socket.emit('chatMessage', msg);
-
-//   // Clear input
-//   e.target.elements.msg.value = '';
-//   e.target.elements.msg.focus();
-// });
 
