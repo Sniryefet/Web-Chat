@@ -1,9 +1,21 @@
 
 
 export const homeController = async(req,res)=>{
-    res.render('home')
+    if (req.isAuthenticated()) {
+        console.log("authenticated successfully");
+        res.render("home");
+      } else {
+        console.log("authenticated failed");
+        res.redirect("/login");
+      }
 }
 
 export const chatRoomController = async(req,res)=>{
-    res.render('chatRoom')
+    if (req.isAuthenticated()) {
+        console.log("authenticated successfully");
+        res.render("chatRoom");
+      } else {
+        console.log("authenticated failed");
+        res.redirect("/login");
+      }
 }
