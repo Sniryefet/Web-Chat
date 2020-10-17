@@ -15,14 +15,14 @@ Big credit to [Brad Traversy](https://github.com/bradtraversy/chatcord) chat for
 4. run  `npm run dev`
 
 ## Overview
-Each user must first login and register 
+#### Each user must first register and login 
 ![](https://github.com/Sniryefet/Web-Chat/blob/master/pictures/register.png)
 ![](https://github.com/Sniryefet/Web-Chat/blob/master/pictures/login.png)
 
-Then the user shall choose his nickname which will be shown as the in the header of each message he sends 
+#### Then the user shall choose his nickname which will be shown as the in the header of each message he sends 
 ![](https://github.com/Sniryefet/Web-Chat/blob/master/pictures/home%20page.png)
 
-Finally the user shall choose a chat room from the list given 
+#### Finally the user shall choose a chat room from the list given 
 ![](https://github.com/Sniryefet/Web-Chat/blob/master/pictures/room%20selection.png)
 
 #### START CHATTING
