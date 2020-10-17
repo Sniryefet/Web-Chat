@@ -12,7 +12,9 @@ const { username, room } = Qs.parse(location.search, {
 
 console.log(username, room);
 
+
 // -------------------------------------------------------------------------------------------------------------
+socket.emit("userJoinedRoom", { username, room });
 
 socket.on("serverMessage", (message) => {
   console.log(message);
@@ -30,7 +32,6 @@ socket.on("roomUsersHandler", ({ room, users }) => {
   updateUsers(users);
 });
 
-socket.emit("userJoinedRoom", { username, room });
 
 // -------------------------------------------------------- FORM Listener --------------------------------------------------------
 

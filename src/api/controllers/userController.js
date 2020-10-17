@@ -32,7 +32,6 @@ export const postLoginController = async (req, res) => {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function () {
-        console.log('inside authenticate')
         res.redirect("/");
       });
     }
